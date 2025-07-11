@@ -1,6 +1,12 @@
 from setuptools import setup, find_packages
 
 def get_requirements() -> list[str]:
+    """
+    Reads the requirements from the requirements.txt file and returns a list of requirements.
+    Returns:
+        list[str]: _description_
+    """
+    
     requirements_lst = []
     
     try:
@@ -17,4 +23,11 @@ def get_requirements() -> list[str]:
         
     return requirements_lst
     
-print(get_requirements())
+setup(
+    name='NetworkSecurity',
+    version='0.0.1',
+    author='Vamsi Krishna',
+    author_email='mr.vkjilla2024@gmail.com',
+    packages= find_packages(),
+    install_requires= get_requirements(),
+    )
