@@ -55,7 +55,7 @@ class NetworkDataExtract():
         
 if __name__ == "__main__":
     try:
-        file = "Network_data\phisingData.csv"  # Example file path
+        file = "Network_data\phisingData.csv"
         database = "network_security"
         collection = "network_data"
         
