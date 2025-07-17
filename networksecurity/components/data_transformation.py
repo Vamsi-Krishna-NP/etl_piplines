@@ -71,7 +71,7 @@ class DataTransformation:
             
             # create and return artifact
             data_transformation_artifact = DataTransformationArtifact(
-                transfomed_train_file_path=self.data_transformation_config.transformed_train_file_path,
+                transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,
                 transformed_test_file_path=self.data_transformation_config.transformed_test_file_path,
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path
             )

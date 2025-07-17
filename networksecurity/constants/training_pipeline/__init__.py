@@ -16,6 +16,9 @@ TEST_FILE_NAME = "test.csv"
 
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
 
+SAVED_MODEL_DIR:str = os.path.join("saved_model")
+MODEL_FILE_NAME:str = "model.pkl"
+
 
 """
     Data ingestion config constants    
@@ -53,3 +56,13 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
     'n_neighbors': 3,
     'weights': 'uniform'
 }
+
+"""
+    Model training config constants
+"""
+
+MODEL_TRAINING_DIR_NAME:str = "model_training"
+MODEL_TRAINER_TRAINED_MODEL_DIR:str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_FILE_NAME:str = "model.pkl"
+TRAINED_MODEL_EXPECTED_SCORE:float = 0.6
+MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD:float = 0.05
