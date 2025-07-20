@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Admin/OneDrive/Desktop/projects/etl/etl_piplines/mlruns/0/models/m-d626936c9a3b4848b80f7b7b981fec57/artifacts
+creation_timestamp: 1752833486267
+experiment_id: '0'
+last_updated_timestamp: 1752833500937
+model_id: m-d626936c9a3b4848b80f7b7b981fec57
+model_type: null
+name: model
+source_run_id: 8cc7b6a3b82e4a1eaf60dc1ca99993b1
+status: 2
+status_message: null

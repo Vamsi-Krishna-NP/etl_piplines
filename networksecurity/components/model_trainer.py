@@ -1,10 +1,11 @@
 import os
 import sys
+import mlflow
 
 from networksecurity.exception import NetworkSecurityException
 from networksecurity.logging import logger
 
-from networksecurity.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact
+from networksecurity.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ClassificationMetricArtifact
 from networksecurity.entity.config_entity import ModelTrainerConfig
 
 from networksecurity.utils.main_utils.utils import load_object, save_object, load_numpy_array, evaluate_models
@@ -24,6 +25,18 @@ class ModelTrainer:
             self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys)
+        
+    def track_mlflow(self, best_model, classification_train_metric:ClassificationMetricArtifact):
+        with mlflow.start_run():
+            f1_score = classification_train_metric.f1_score
+            recall = classification_train_metric.recall
+            precision = classification_train_metric.precision
+            
+            mlflow.log_metric("f1_score", f1_score)
+            mlflow.log_metric("recall", recall)
+            mlflow.log_metric("precision", precision)
+            mlflow.sklearn.log_model(best_model, "model")
+            
         
     def train_model(self, x_train, y_train, x_test, y_test):
         model = {
@@ -82,8 +95,12 @@ class ModelTrainer:
         y_train_pred = best_model.predict(x_train)
         classification_train_metric = get_classification_score(y_true=y_train, y_pred=y_train_pred)
         
+        self.track_mlflow(best_model, classification_train_metric)
+        
         y_test_pred = best_model.predict(x_test)
         classification_test_metric = get_classification_score(y_true=y_test, y_pred=y_test_pred)
+        
+        self.track_mlflow(best_model, classification_test_metric)
         
         preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
         

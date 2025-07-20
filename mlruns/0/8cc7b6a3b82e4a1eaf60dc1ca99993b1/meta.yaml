@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Admin/OneDrive/Desktop/projects/etl/etl_piplines/mlruns/0/8cc7b6a3b82e4a1eaf60dc1ca99993b1/artifacts
+end_time: 1752833500966
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8cc7b6a3b82e4a1eaf60dc1ca99993b1
+run_name: judicious-grouse-749
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1752833485860
+status: 3
+tags: []
+user_id: Admin
